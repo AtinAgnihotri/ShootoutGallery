@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8503B42426BC270500B78504 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503B42326BC270500B78504 /* AppDelegate.swift */; };
 		8503B42626BC270500B78504 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8503B42526BC270500B78504 /* GameScene.sks */; };
-		8503B42826BC270500B78504 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8503B42726BC270500B78504 /* Actions.sks */; };
 		8503B42A26BC270500B78504 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503B42926BC270500B78504 /* GameScene.swift */; };
 		8503B42C26BC270500B78504 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503B42B26BC270500B78504 /* GameViewController.swift */; };
 		8503B42F26BC270500B78504 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8503B42D26BC270500B78504 /* Main.storyboard */; };
@@ -20,7 +19,6 @@
 		8503B42026BC270500B78504 /* ShootingGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShootingGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8503B42326BC270500B78504 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8503B42526BC270500B78504 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		8503B42726BC270500B78504 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		8503B42926BC270500B78504 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		8503B42B26BC270500B78504 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8503B42E26BC270500B78504 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -60,7 +58,6 @@
 			children = (
 				8503B42326BC270500B78504 /* AppDelegate.swift */,
 				8503B42526BC270500B78504 /* GameScene.sks */,
-				8503B42726BC270500B78504 /* Actions.sks */,
 				8503B42926BC270500B78504 /* GameScene.swift */,
 				8503B42B26BC270500B78504 /* GameViewController.swift */,
 				8503B42D26BC270500B78504 /* Main.storyboard */,
@@ -130,7 +127,6 @@
 				8503B42F26BC270500B78504 /* Main.storyboard in Resources */,
 				8503B42626BC270500B78504 /* GameScene.sks in Resources */,
 				8503B43126BC270A00B78504 /* Assets.xcassets in Resources */,
-				8503B42826BC270500B78504 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +288,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.atinagnihotri.ShootingGallery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -311,7 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.atinagnihotri.ShootingGallery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
