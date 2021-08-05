@@ -11,32 +11,39 @@ class Target: SKNode {
     
     var target: SKSpriteNode!
     
-    func initialize() {
-        addStick()
-        addTarget()
+    func initialize(with velocity: CGVector) {
+        
+        addTarget(with: velocity)
     }
     
     func getRandomStick() -> String {
         ["stick0", "stick1", "stick2"].randomElement() ?? "stick0"
     }
     
-    func addStick() {
+    func addStickBehindTarget() {
         let stick = SKSpriteNode(imageNamed: getRandomStick())
         stick.position = CGPoint(x: 0, y: -100)
-        stick.zPosition = 0
-        addChild(stick)
+        stick.zPosition = -1
+        
+        target.addChild(stick)
     }
     
     func getRandomTarget() -> String {
         ["target0", "target1", "target2", "target3"].randomElement() ?? "target0"
     }
     
-    func addTarget() {
+    func addTarget(with velocity: CGVector) {
         let targetName = getRandomTarget()
         target = SKSpriteNode(imageNamed: targetName)
         target.zPosition = 1
         target.name = targetName != "target3" ? "targetGood" : "targetBad"
+        target.physicsBody = SKPhysicsBody(rectangleOf: target.size)
+        target.physicsBody?.linearDamping = 0
+        target.physicsBody?.angularDamping = 100
+        target.physicsBody?.velocity = velocity
+        target.physicsBody?.collisionBitMask = 0 // So that the targets pass through each other instead of colliding
         addChild(target)
+        addStickBehindTarget()
     }
     
     func targetHit() {
