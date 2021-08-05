@@ -13,6 +13,10 @@
 		8503B42C26BC270500B78504 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503B42B26BC270500B78504 /* GameViewController.swift */; };
 		8503B42F26BC270500B78504 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8503B42D26BC270500B78504 /* Main.storyboard */; };
 		8503B43126BC270A00B78504 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43026BC270A00B78504 /* Assets.xcassets */; };
+		8503B43C26BC289800B78504 /* shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43926BC289800B78504 /* shot.wav */; };
+		8503B43D26BC289800B78504 /* reload.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43A26BC289800B78504 /* reload.wav */; };
+		8503B43E26BC289800B78504 /* empty.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43B26BC289800B78504 /* empty.wav */; };
+		8503B44026BC295200B78504 /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43F26BC295200B78504 /* explosion.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		8503B42E26BC270500B78504 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8503B43026BC270A00B78504 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8503B43226BC270A00B78504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8503B43926BC289800B78504 /* shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shot.wav; sourceTree = "<group>"; };
+		8503B43A26BC289800B78504 /* reload.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reload.wav; sourceTree = "<group>"; };
+		8503B43B26BC289800B78504 /* empty.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = empty.wav; sourceTree = "<group>"; };
+		8503B43F26BC295200B78504 /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		8503B42226BC270500B78504 /* ShootingGallery */ = {
 			isa = PBXGroup;
 			children = (
+				8503B43826BC288B00B78504 /* Audio */,
 				8503B42326BC270500B78504 /* AppDelegate.swift */,
 				8503B42526BC270500B78504 /* GameScene.sks */,
 				8503B42926BC270500B78504 /* GameScene.swift */,
@@ -63,8 +72,19 @@
 				8503B42D26BC270500B78504 /* Main.storyboard */,
 				8503B43026BC270A00B78504 /* Assets.xcassets */,
 				8503B43226BC270A00B78504 /* Info.plist */,
+				8503B43F26BC295200B78504 /* explosion.sks */,
 			);
 			path = ShootingGallery;
+			sourceTree = "<group>";
+		};
+		8503B43826BC288B00B78504 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				8503B43B26BC289800B78504 /* empty.wav */,
+				8503B43A26BC289800B78504 /* reload.wav */,
+				8503B43926BC289800B78504 /* shot.wav */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +146,11 @@
 			files = (
 				8503B42F26BC270500B78504 /* Main.storyboard in Resources */,
 				8503B42626BC270500B78504 /* GameScene.sks in Resources */,
+				8503B43E26BC289800B78504 /* empty.wav in Resources */,
+				8503B43C26BC289800B78504 /* shot.wav in Resources */,
+				8503B44026BC295200B78504 /* explosion.sks in Resources */,
 				8503B43126BC270A00B78504 /* Assets.xcassets in Resources */,
+				8503B43D26BC289800B78504 /* reload.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
