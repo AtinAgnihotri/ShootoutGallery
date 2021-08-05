@@ -17,6 +17,7 @@
 		8503B43D26BC289800B78504 /* reload.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43A26BC289800B78504 /* reload.wav */; };
 		8503B43E26BC289800B78504 /* empty.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43B26BC289800B78504 /* empty.wav */; };
 		8503B44026BC295200B78504 /* explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8503B43F26BC295200B78504 /* explosion.sks */; };
+		8503B44926BC486F00B78504 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8503B44826BC486F00B78504 /* Target.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8503B43A26BC289800B78504 /* reload.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reload.wav; sourceTree = "<group>"; };
 		8503B43B26BC289800B78504 /* empty.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = empty.wav; sourceTree = "<group>"; };
 		8503B43F26BC295200B78504 /* explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = explosion.sks; sourceTree = "<group>"; };
+		8503B44826BC486F00B78504 /* Target.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				8503B43026BC270A00B78504 /* Assets.xcassets */,
 				8503B43226BC270A00B78504 /* Info.plist */,
 				8503B43F26BC295200B78504 /* explosion.sks */,
+				8503B44826BC486F00B78504 /* Target.swift */,
 			);
 			path = ShootingGallery;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				8503B42A26BC270500B78504 /* GameScene.swift in Sources */,
 				8503B42C26BC270500B78504 /* GameViewController.swift in Sources */,
+				8503B44926BC486F00B78504 /* Target.swift in Sources */,
 				8503B42426BC270500B78504 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

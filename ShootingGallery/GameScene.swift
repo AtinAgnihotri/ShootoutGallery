@@ -56,6 +56,8 @@ class GameScene: SKScene {
         addChild(curtain)
     }
     
+    
+    
     /*
     func addWaterPlate() {
         waterPlate =
