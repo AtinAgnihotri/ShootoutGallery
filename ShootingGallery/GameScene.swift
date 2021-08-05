@@ -16,6 +16,7 @@ class GameScene: SKScene {
     var ammoDisplay: SKSpriteNode!
     
     var waterInPeak = false
+    var isGameOver = false
     var gameTimer: Timer!
     
     var score = 0 {
@@ -36,9 +37,11 @@ class GameScene: SKScene {
     }
     var ammoLeft = 3 {
         didSet {
-            ammoDisplay.texture = SKTexture(imageNamed: "shots\(ammoLeft)")
             if ammoLeft <= 0 {
+                ammoDisplay.texture = SKTexture(imageNamed: "shots0")
                 reload()
+            } else {
+                ammoDisplay.texture = SKTexture(imageNamed: "shots\(ammoLeft)")
             }
         }
     }
@@ -151,6 +154,7 @@ class GameScene: SKScene {
     }
     
     func gameOver() {
+        isGameOver = true
         gameTimer?.invalidate()
         toggleHud(false)
         addGameOverText()
@@ -167,7 +171,7 @@ class GameScene: SKScene {
     func addFinalScoreText() {
         let finalScore = SKLabelNode(fontNamed: "Chalkduster")
         finalScore.text = "Final Score: \(score)"
-        finalScore.position = CGPoint(x: 400, y: 384)
+        finalScore.position = CGPoint(x: 512, y: 220)
         finalScore.zPosition = 300
         addChild(finalScore)
     }
@@ -186,22 +190,59 @@ class GameScene: SKScene {
         let target = Target()
         target.initialize(with: getRandomVelocityForTarget(fromLeft: isFromLeft))
         target.position = getRandomPositionForTarget(fromLeft: isFromLeft)
-        target.target.physicsBody?.velocity = getRandomVelocityForTarget(fromLeft: isFromLeft)
+        target.physicsBody?.velocity = getRandomVelocityForTarget(fromLeft: isFromLeft)
         target.zPosition = 1
         addChild(target)
         secondsLeft -= 1
         print("\(target.target.name ?? "target") created")
     }
     
-    
-    /*
-    func addWaterPlate() {
-        waterPlate =
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard !isGameOver else { return }
+        guard ammoLeft > 0 else {
+            playAudio(named: "empty")
+            return
+        }
+        guard let touch = touches.first else { return }
+        let touchLocation = touch.location(in: self)
+        shot(at: touchLocation)
+        for node in nodes(at: touchLocation) {
+            guard let target = node as? Target else { continue }
+            didHit(target, wasGood: target.name == "targetGood")
+        }
     }
-    */
+    
+    func shot(at location: CGPoint) {
+        guard let explosion = SKEmitterNode(fileNamed: "explosion") else { return }
+        explosion.position = location
+        explosion.zPosition = 150
+        explosion.xScale = 0.8
+        explosion.yScale = 0.8
+        addChild(explosion)
+        ammoLeft -= 1
+        playAudio(named: "shot")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak explosion] in
+            explosion?.removeFromParent()
+        }
+    }
+    
+    func didHit(_ target: Target, wasGood: Bool) {
+        target.targetHit()
+        score += wasGood ? 3 : -5
+    }
     
     func reload() {
-        
+        playAudio(named: "empty")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.playAudio(named: "reload")
+            self?.ammoLeft = 3
+        }
+    }
+    
+    func playAudio(named: String) {
+        let fileName = named + ".wav"
+        let audio = SKAction.playSoundFileNamed(fileName, waitForCompletion: false)
+        run(audio)
     }
     
     

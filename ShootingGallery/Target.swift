@@ -12,8 +12,9 @@ class Target: SKNode {
     var target: SKSpriteNode!
     
     func initialize(with velocity: CGVector) {
-        
-        addTarget(with: velocity)
+        addTarget()
+        addStickBehindTarget()
+        addPhysicsBody(with: velocity)
     }
     
     func getRandomStick() -> String {
@@ -24,40 +25,40 @@ class Target: SKNode {
         let stick = SKSpriteNode(imageNamed: getRandomStick())
         stick.position = CGPoint(x: 0, y: -100)
         stick.zPosition = -1
-        
-        target.addChild(stick)
+        addChild(stick)
     }
     
     func getRandomTarget() -> String {
         ["target0", "target1", "target2", "target3"].randomElement() ?? "target0"
     }
     
-    func addTarget(with velocity: CGVector) {
+    func addTarget() {
         let targetName = getRandomTarget()
         target = SKSpriteNode(imageNamed: targetName)
         target.zPosition = 1
-        target.name = targetName != "target3" ? "targetGood" : "targetBad"
-        target.physicsBody = SKPhysicsBody(rectangleOf: target.size)
-        target.physicsBody?.linearDamping = 0
-        target.physicsBody?.angularDamping = 100
-        target.physicsBody?.velocity = velocity
-        target.physicsBody?.collisionBitMask = 0 // So that the targets pass through each other instead of colliding
+        name = targetName != "target3" ? "targetGood" : "targetBad"
         addChild(target)
-        addStickBehindTarget()
+    }
+    
+    func addPhysicsBody(with velocity: CGVector) {
+        physicsBody = SKPhysicsBody(rectangleOf: target.size)
+        physicsBody?.linearDamping = 0
+        physicsBody?.angularDamping = 100
+        physicsBody?.velocity = velocity
+        physicsBody?.collisionBitMask = 0 // So that the targets pass through each other instead of colliding
     }
     
     func targetHit() {
-        scaleDownTarget()
-        explosionAtTarget()
+        target.alpha = 0
     }
     
-    func scaleDownTarget() {
-        target.xScale = 0.8
-        target.yScale = 0.8
-    }
+//    func scaleDownTarget() {
+//        target.xScale = 0.8
+//        target.yScale = 0.8
+//    }
     
-    func explosionAtTarget() {
-        guard let explosion = SKEmitterNode(fileNamed: "explosion") else { return }
-        addChild(explosion)
-    }
+//    func explosionAtTarget() {
+//        guard let explosion = SKEmitterNode(fileNamed: "explosion") else { return }
+//        addChild(explosion)
+//    }
 }
