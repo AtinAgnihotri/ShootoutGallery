@@ -14,6 +14,7 @@ class GameScene: SKScene {
     var scoreLabel: SKLabelNode!
     var secondsLeftLabel: SKLabelNode!
     var ammoDisplay: SKSpriteNode!
+    var crosshair: SKSpriteNode!
     
     var waterInPeak = false
     var isGameOver = false
@@ -53,6 +54,7 @@ class GameScene: SKScene {
         setupWorldPhysics()
         setupBackground()
         setupHud()
+        setupCrosshair()
         setupGameTimer()
         print("Game Load Complete")
     }
@@ -197,6 +199,11 @@ class GameScene: SKScene {
         print("\(target.target.name ?? "target") created")
     }
     
+    func setupCrosshair() {
+        crosshair = SKSpriteNode(imageNamed: "cursor")
+        crosshair.zPosition = 350
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isGameOver else { return }
         guard ammoLeft > 0 else {
@@ -213,16 +220,33 @@ class GameScene: SKScene {
     }
     
     func shot(at location: CGPoint) {
-        guard let explosion = SKEmitterNode(fileNamed: "explosion") else { return }
-        explosion.position = location
-        explosion.zPosition = 150
-        explosion.xScale = 0.8
-        explosion.yScale = 0.8
-        addChild(explosion)
+        showExplosion(at: location)
+        showCrosshair(at: location)
         ammoLeft -= 1
         playAudio(named: "shot")
+        
+    }
+    
+    func showExplosion(at location: CGPoint) {
+        guard let explosion = SKEmitterNode(fileNamed: "explosion") else { return }
+        explosion.position = location
+        explosion.zPosition = 250
+//        explosion.xScale = 0.8
+//        explosion.yScale = 0.8
+        addChild(explosion)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak explosion] in
             explosion?.removeFromParent()
+        }
+    }
+    
+    func showCrosshair(at location: CGPoint) {
+        if crosshair.parent != nil {
+            crosshair.removeFromParent()
+        }
+        crosshair.position = location
+        addChild(crosshair)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.crosshair.removeFromParent()
         }
     }
     
