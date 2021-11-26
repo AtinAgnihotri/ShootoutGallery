@@ -231,8 +231,6 @@ class GameScene: SKScene {
         guard let explosion = SKEmitterNode(fileNamed: "explosion") else { return }
         explosion.position = location
         explosion.zPosition = 250
-//        explosion.xScale = 0.8
-//        explosion.yScale = 0.8
         addChild(explosion)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak explosion] in
             explosion?.removeFromParent()
